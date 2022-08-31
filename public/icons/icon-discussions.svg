@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <defs>
+        <filter id="gxubzpxnia" color-interpolation-filters="auto">
+            <feColorMatrix in="SourceGraphic" values="0 0 0 0 0.443137 0 0 0 0 0.450980 0 0 0 0 0.458824 0 0 0 1.000000 0"/>
+        </filter>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g filter="url(#gxubzpxnia)">
+            <g fill="#000" fill-rule="nonzero" transform="translate(7.000000, 8.000000)">
+                <path d="M16.714 0H1.286C.576 0 0 .576 0 1.286V11.57c0 .71.576 1.286 1.286 1.286h2.089v1.64c0 .357.203.684.525.84.322.156.705.114.986-.108l2.995-2.372h8.833c.71 0 1.286-.575 1.286-1.286V1.286C18 .576 17.424 0 16.714 0zm.322 11.571c0 .178-.144.322-.322.322h-9c-.107 0-.21.037-.295.103l-3.08 2.436v-2.057c0-.128-.05-.25-.14-.34-.091-.091-.214-.142-.342-.142H1.286c-.178 0-.322-.144-.322-.322V1.286c0-.178.144-.322.322-.322h15.428c.178 0 .322.144.322.322V11.57z"/>
+                <circle cx="9" cy="6.429" r="1"/>
+                <circle cx="5.143" cy="6.429" r="1"/>
+                <circle cx="12.857" cy="6.429" r="1"/>
+            </g>
+        </g>
+    </g>
+</svg>
