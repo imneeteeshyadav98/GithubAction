@@ -53,5 +53,5 @@ jobs:
       - name: show all the pods
         run: kubectl get pods
       - name: Echo Secrets of deployment file
-        run: 'echo "$KUBE_DEPLOYMENT_FILE">deployment.yaml'
+        run: 'echo "${{secretes.KUBE_DEPLOYMENT_FILE}}">deployment.yaml'
         shell: bash
