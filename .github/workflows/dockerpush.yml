@@ -26,7 +26,7 @@ jobs:
         uses: azure/setup-kubectl@v1
         with:
           version: 'v1.21.3'
-        id: install
+        id: installs
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: docker login
@@ -48,6 +48,5 @@ jobs:
         shell: bash 
       - name: Export the kubeconfig 
         run: export KUBECONFIG=k8s-config.yaml 
-      - name: Check the kubectl version 
-        run: kubectl version 
-        shell: bash
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-1-22-8-do-1-blr1-1655203818231
