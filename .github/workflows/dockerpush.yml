@@ -43,4 +43,4 @@ jobs:
         shell: bash 
       - name: Export the kubeconfig 
         run: export KUBECONFIG=k8s-config.yaml 
-        shell: bash
+        run: echo ${KUBECONFIG}
