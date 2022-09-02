@@ -39,12 +39,3 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with: 
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-      - name: Echo kube config file
-        run: 'echo "$KUBE_CONFIG_FILE">k8s-config.yaml'
-        shell: bash 
-      # - name: Export the kubeconfig 
-      #   run: export KUBECONFIG=k8s-config.yaml 
-      #   shell: bash
-      # - name: Check the kubectl version 
-      #   run: kubectl version 
-      #   shell: bash
