@@ -42,9 +42,9 @@ jobs:
       - name: Echo kube config file
         run: 'echo "$KUBE_CONFIG_FILE">k8s-config.yaml'
         shell: bash 
-      - name: Export the kubeconfig 
-        run: export KUBECONFIG=k8s-config.yaml 
-        shell: bash
-      - name: Check the kubectl version 
-        run: kubectl version 
-        shell: bash
+      # - name: Export the kubeconfig 
+      #   run: export KUBECONFIG=k8s-config.yaml 
+      #   shell: bash
+      # - name: Check the kubectl version 
+      #   run: kubectl version 
+      #   shell: bash
