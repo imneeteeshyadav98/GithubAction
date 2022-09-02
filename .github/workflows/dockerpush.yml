@@ -12,7 +12,8 @@ on:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
+env:
+KUBE_CONFIG_FILE: ${{ secrets.KUBE_CONFIG_FILE }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -37,4 +38,13 @@ jobs:
       - name: Install doctl to communicate with digital ocean 
         uses: digitalocean/action-doctl@v2
         with: 
-          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }} 
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Echo kube config file
+        run: 'echo "$KUBE_CONFIG_FILE">k8s-config.yaml'
+        shell: bash 
+      - name: Export the kubeconfig 
+        run: export KUBECONFIG=k8s-config.yaml 
+        shell: bash
+      - name: Check the kubectl version 
+        run: kubectl version 
+        shell: bash
