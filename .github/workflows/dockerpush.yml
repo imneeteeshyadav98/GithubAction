@@ -34,3 +34,7 @@ jobs:
         run: docker build -t zneetesh/admin-portal .
       - name: Docker push 
         run: docker push ${{secrets.DOCKER_USER}}/admin-portal
+      - name: Install doctl to communicate with digital ocean 
+        uses: digitalocean/action-doctl@v2
+        with: 
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }} 
