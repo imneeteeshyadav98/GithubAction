@@ -60,3 +60,6 @@ jobs:
       - name: cat Deployment.yaml file
         run: cat deployment.yaml 
         shell: bash
+      - name: Deploy yml file
+        run: kubectl apply -f deployment.yaml --validate=false
+
