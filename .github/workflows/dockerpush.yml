@@ -43,3 +43,6 @@ jobs:
         shell: bash 
       - name: Export the kubeconfig 
         run: export KUBECONFIG=k8s-config.yaml 
+      - name: Check the kubectl version 
+        run: kubectl version 
+        shell: bash
