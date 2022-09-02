@@ -62,4 +62,6 @@ jobs:
         shell: bash
       - name: Deploy yml file
         run: kubectl apply -f deployment.yaml --validate=false
+      - name: show pods after deploy
+        run: kubectl get pods 
 
