@@ -13,7 +13,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-
+env: 
+ KUBE_DEPLOYMENT_FILE: ${{ secrets.KUBE_DEPLOYMENT_FILE }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -54,5 +55,8 @@ jobs:
       - name: show all the pods
         run: kubectl get pods
       - name: Echo Secrets of deployment file
-        run: 'echo ${{secretes.KUBE_DEPLOYMENT_FILE}}>deployment.yaml'
+        run: 'echo "$KUBE_DEPLOYMENT_FILE">deployment.yaml'
+        shell: bash
+      - name: cat Deployment.yaml file
+        run: cat deployment.yaml 
         shell: bash
