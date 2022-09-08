@@ -30,6 +30,6 @@ jobs:
         run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build The docker image
-        run: docker build -t zneetesh/admin-portal .
+        run: docker build -t zneetesh/admin-portal --build-arg env_file=${{secrets.ENV_FILE}} .
       - name: Docker push 
         run: docker push ${{secrets.DOCKER_USER}}/admin-portal
