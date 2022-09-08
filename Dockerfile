@@ -11,11 +11,11 @@ RUN npm run build
 
 
 
-#CMD ["npm", "run", "dev"]
+CMD ["npm", "run", "dev"]
 
-# Stage 2
-FROM nginx:1.21.3-alpine
-COPY --from=build-step /app/build/ /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# # Stage 2
+# FROM nginx:1.21.3-alpine
+# COPY --from=build-step /app/build/ /usr/share/nginx/html
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+# EXPOSE 80
