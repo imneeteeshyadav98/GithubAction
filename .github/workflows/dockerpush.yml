@@ -12,6 +12,8 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+env: 
+ KUBE_DEPLOYMENT_FILE: ${{ secrets.KUBE_DEPLOYMENT_FILE }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -21,6 +23,11 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+      - name: Install kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'v1.21.3'
+        id: installs
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       - name: docker login
@@ -29,7 +36,38 @@ jobs:
          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
         run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+<<<<<<< HEAD
       - name: Build The docker image
         run: docker build -t zneetesh/admin-portal --build-arg env_file=${{secrets.ENV_FILE}} .
       - name: Docker push 
         run: docker push ${{secrets.DOCKER_USER}}/admin-portal
+=======
+      # - name: Build The docker image
+      #   run: docker build -t zneetesh/admin-portal .
+      # - name: Docker push 
+      #   run: docker push ${{secrets.DOCKER_USER}}/admin-portal
+      - name: Install doctl to communicate with digital ocean 
+        uses: digitalocean/action-doctl@v2
+        with: 
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN }} 
+      - name: Echo kube config file
+        run: 'echo "$KUBE_CONFIG_FILE">k8s-config.yaml'
+        shell: bash 
+      - name: Export the kubeconfig 
+        run: export KUBECONFIG=k8s-config.yaml 
+      - name: Save DigitalOcean kubeconfig with short-lived credentials
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-1-22-8-do-1-blr1-1655203818231
+      - name: show all the pods
+        run: kubectl get pods
+      - name: Echo Secrets of deployment file
+        run: 'echo "$KUBE_DEPLOYMENT_FILE">deployment.yaml'
+        shell: bash
+      - name: cat Deployment.yaml file
+        run: cat deployment.yaml 
+        shell: bash
+      - name: Deploy yml file
+        run: kubectl apply -f deployment.yaml --validate=false
+      - name: show pods after deploy
+        run: kubectl get pods 
+
+>>>>>>> cdf29f21e0b531edef36d90cf398b28119e1b879
