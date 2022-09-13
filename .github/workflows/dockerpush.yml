@@ -14,6 +14,7 @@ on:
 
 env: 
  KUBE_DEPLOYMENT_FILE: ${{ secrets.KUBE_DEPLOYMENT_FILE }}
+ ENV_FILE: ${{secrets.ENV_FILE}}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
@@ -23,20 +24,24 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Install kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.21.3'
-        id: installs
+      - name: Read env files
+        run: echo $ENV_FILE
+        shell: bash
+      # - name: Install kubectl
+      #   uses: azure/setup-kubectl@v1
+      #   with:
+      #     version: 'v1.21.3'
+      #   id: installs
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-      - name: docker login
-        env: 
-         DOCKER_USER: ${{secrets.DOCKER_USER}}
-         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-        run: |
-         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-      - name: Build The docker image
-        run: docker build -t zneetesh/admin-portal --build-arg ENV_FILE=${{secrets.ENV_FILE}} .
-      - name: Docker push 
-        run: docker push ${{secrets.DOCKER_USER}}/admin-portal
+      # - uses: actions/checkout@v3
+      # - name: docker login
+      #   env: 
+      #    DOCKER_USER: ${{secrets.DOCKER_USER}}
+      #    DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+      #   run: |
+      #    docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+      # - name: Build The docker image
+      #   run: docker build -t zneetesh/admin-portal  .
+
+      # - name: Docker push 
+      #   run: docker push ${{secrets.DOCKER_USER}}/admin-portal
