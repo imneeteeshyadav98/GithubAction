@@ -32,8 +32,9 @@ jobs:
       - name: Cat env file
         run: |
           cat .env
-          ls 
           pwd 
+      - name: long list 
+        run: ls
       - name: Install kubectl
         uses: azure/setup-kubectl@v1
         with:
@@ -48,6 +49,6 @@ jobs:
         run: |
          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
       - name: Build The docker image
-        run: docker build -t zneetesh/admin-portal --build-arg ENV_FILE=${{secrets.ENV_FILE}} >.env  .
+        run: docker build -t zneetesh/admin-portal  .
       # - name: Docker push 
       #   run: docker push ${{secrets.DOCKER_USER}}/admin-portal
