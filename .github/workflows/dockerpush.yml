@@ -27,6 +27,10 @@ jobs:
       - name: Read env files
         run: echo $ENV_FILE
         shell: bash
+      - name: Read the files and store 
+        run: echo $ENV_FILE > .env
+      - name: Cat env file
+        run: cat .env 
       # - name: Install kubectl
       #   uses: azure/setup-kubectl@v1
       #   with:
