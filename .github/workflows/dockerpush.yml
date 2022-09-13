@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Read env files
         run: |
-          echo $ENV_FILE >> .env 
+          echo ${{secrets.ENV_FILE}} >> .env 
           cat .env
         shell: bash
       # - name: Install kubectl
