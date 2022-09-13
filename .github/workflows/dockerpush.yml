@@ -25,9 +25,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Read env files
-        run: |
-          echo $ENV_FILE > .env 
-          cat .env
+        run: echo $ENV_FILE
         shell: bash
       # - name: Install kubectl
       #   uses: azure/setup-kubectl@v1
