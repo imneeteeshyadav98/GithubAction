@@ -1,10 +1,9 @@
 # Stage 1
 FROM node:16.15.0-alpine as build-step
-ARG ENV_FILE
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-RUN echo $ENV_FILE > test.txt
+COPY /home/runner/work/GithubAction/GithubAction/.env .
 RUN npm install
 RUN npm run build
 
