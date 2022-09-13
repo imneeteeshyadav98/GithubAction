@@ -4,14 +4,14 @@ ARG ENV_FILE
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-RUN echo $ENV_FILE | base64 -d > .env
-RUN npm install
-RUN npm run build
+RUN echo $ENV_FILE | base64 -d >> .env
+#RUN npm install
+#RUN npm run build
 
 
 
 
-CMD ["npm", "run", "dev"]
+#CMD ["npm", "run", "dev"]
 
 # # Stage 2
 # FROM nginx:1.21.3-alpine
