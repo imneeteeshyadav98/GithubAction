@@ -14,7 +14,7 @@ on:
 
 env: 
  KUBE_DEPLOYMENT_FILE: ${{ secrets.KUBE_DEPLOYMENT_FILE }}
- ENV_FILE: "testtestest"
+ ENV_FILE: ${{ secrets.ENV_FILE }}
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
