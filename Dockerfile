@@ -3,7 +3,6 @@ FROM node:16.15.0-alpine as build-step
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-COPY /home/runner/work/GithubAction/GithubAction/.env .
 RUN npm install
 RUN npm run build
 
