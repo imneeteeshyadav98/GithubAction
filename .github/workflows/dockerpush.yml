@@ -26,10 +26,10 @@ jobs:
     steps:
       - name: Create env Files
         run: |
-          echo $ENV_FILE >> txt.py
-          cat txt.py
+          echo $ENV_FILE >> .env
+          cat .env
           pwd 
-          ls
+          ls -a
       # - name: Install kubectl
       #   uses: azure/setup-kubectl@v1
       #   with:
