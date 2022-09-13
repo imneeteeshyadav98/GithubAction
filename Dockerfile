@@ -4,7 +4,7 @@ ARG ENV_FILE
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-RUN echo $ENV_FILE | base64 --decode > .env
+RUN echo $ENV_FILE | base64 -d > .env
 RUN npm install
 RUN npm run build
 
