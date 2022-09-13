@@ -1,10 +1,10 @@
 # Stage 1
 FROM node:16.15.0-alpine as build-step
-ARG env_file
+ARG ENV_FILE
 RUN mkdir -p /app
 WORKDIR /app
 COPY . .
-RUN echo $env_file > test.txt
+RUN echo $ENV_FILE > test.txt
 RUN npm install
 RUN npm run build
 
